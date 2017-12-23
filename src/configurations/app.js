@@ -1,3 +1,4 @@
 module.exports = {
-  baseUrl: ''
+  baseUrl: '',
+  port: 8080,
 };
