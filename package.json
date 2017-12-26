@@ -1,19 +1,19 @@
 {
   "name": "lista-tareas",
   "version": "1.0.0",
-  "description": "",
+  "description": "Para registrar tareas y hacer su seguimiento",
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "NODE_ENV=test tape tests/**/*.js | tap-spec"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Ariel Alvarado",
+  "license": "MIT",
   "dependencies": {
     "express": "^4.16.2",
     "joi": "^13.0.2",
-    "mongorito": "^3.0.4",
+    "mongoose": "^4.13.7",
     "winston": "^3.0.0-rc1"
   },
   "devDependencies": {
@@ -22,6 +22,8 @@
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.5.1",
+    "supertest": "^3.0.0",
+    "tap-spec": "^4.1.1",
     "tape": "^4.8.0"
   }
 }

@@ -1,10 +1,9 @@
 const router = require('express').Router();
-const app = require('../../init');
-const handlers = require('./tareasHandler');
+const tareasController = require('./tareasController');
 
-router.get('', handlers.postHandler)
-  .post('', handlers.getHandler)
-  .patch('')
-  .delete('');
+router.get('', tareasController.get)
+  .post('', tareasController.post)
+  .patch('', tareasController.patch)
+  .delete('', tareasController.del);
 
-app.use('/tareas', router);
+module.exports = router;
