@@ -1,6 +1,4 @@
-const mongoose = require('mongoose');
-
-const tarea = mongoose.model('Tarea', {
+const tareaSchema = {
   titulo: {
     type: String,
     required: true,
@@ -42,6 +40,7 @@ const tarea = mongoose.model('Tarea', {
       required: true,
     },
   },
-});
+};
 
-module.exports.modelo = tarea;
+module.exports.esquema = tareaSchema;
+module.exports.nombre = 'Tarea';

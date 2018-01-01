@@ -1,18 +1,18 @@
 const express = require('express');
-const allRoutes = require('../components');
+const events = require('events');
+const routes = require('./routes');
 const logger = require('../helpers/logger');
 const middlewaresBefore = require('./middlewares/before');
 const middlewaresAfter = require('./middlewares/after');
 
 const app = express();
+app.globalEventEmitter = new events.EventEmitter();
 
 logger.info(`[${__filename}] *** Setting middlewares before routes ***`);
 middlewaresBefore(app);
 
-Object.keys(allRoutes).forEach((routeName) => {
-  logger.info(`[${__filename}] *** Adding route -${routeName}- ***`);
-  app.use(`/${routeName}`, allRoutes[routeName]);
-});
+logger.info(`[${__filename}] *** Setting up routes ***`);
+routes.init(app);
 
 logger.info(`[${__filename}] *** Setting middlewares after routes ***`);
 middlewaresAfter(app);
