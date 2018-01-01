@@ -1,5 +1,8 @@
-const post = (req, res) => {
-  res.json({ respuesta: 'post' });
+const tareasBL = require('./tareasBL');
+
+const post = async (req, res) => {
+  const tareaCreada = await tareasBL.crearTarea(req.body);
+  res.json(tareaCreada);
 };
 
 const get = (req, res) => {
