@@ -2,8 +2,18 @@ const Validator = require('fastest-validator');
 const db = require('../../init/databases');
 const schemas = require('./schemas');
 
-const validator = new Validator();
+/**
+ * @typedef {Object} Tarea
+ * @property {String} titulo
+ * @property {String} descripcion
+ */
 
+const validator = new Validator();
+/**
+ * Valida los datos de una tarea
+ * @param  {Tarea} datos
+ * @returns {Array} Returns an array with errors
+ */
 module.exports.validarDatosPost = (datos) => {
   const check = validator.compile(schemas.post);
   return check(datos);
@@ -11,9 +21,7 @@ module.exports.validarDatosPost = (datos) => {
 
 /**
  * Permite crear una tarea y guardarla
- * @param  {Array} datos
- * @param  {String} datos.titulo
- * @param  {String} datos.descripcion
+ * @param  {Tarea} datos
  * @throws {ValidationError}
  */
 module.exports.crearTarea = async (datos) => {

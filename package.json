@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
+    "jsdoc": "jsdoc src/**/* -d docs",
     "test": "NODE_ENV=test tape tests/**/*.js | tap-spec"
   },
   "keywords": [],
@@ -24,6 +25,7 @@
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.5.1",
+    "jsdoc": "^3.5.5",
     "supertest": "^3.0.0",
     "tap-spec": "^4.1.1",
     "tape": "^4.8.0"
