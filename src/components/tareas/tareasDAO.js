@@ -15,7 +15,7 @@ const validator = new Validator();
  * @returns {Array} Returns an array with errors
  */
 module.exports.validarDatosPost = (datos) => {
-  const check = validator.compile(schemas.tarea.post);
+  const check = validator.compile(schemas.post);
   return check(datos);
 };
 

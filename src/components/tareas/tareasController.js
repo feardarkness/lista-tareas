@@ -1,8 +1,18 @@
+const ErrorDeValidacion = require('../../errores/error-validacion');
 const tareasBL = require('./tareasBL');
+const errorHandler = require('../../helpers/error-handler');
 
 const post = async (req, res) => {
-  const tareaCreada = await tareasBL.crearTarea(req.body);
-  res.json(tareaCreada);
+  try {
+    const esValido = await tareasBL.validarDatosPost(req.body);
+    if (esValido !== true) {
+      throw new ErrorDeValidacion(esValido, 10);
+    }
+    const tareaCreada = await tareasBL.crearTarea(req.body);
+    res.json(tareaCreada);
+  } catch (err) {
+    errorHandler(res, err);
+  }
 };
 
 const get = (req, res) => {

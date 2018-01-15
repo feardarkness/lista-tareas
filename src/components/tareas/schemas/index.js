@@ -1,5 +1,5 @@
-const post = require('./postSchema');
+const tarea = require('./tareaSchema');
 
 module.exports = {
-  post,
+  tarea,
 };
