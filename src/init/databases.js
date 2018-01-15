@@ -4,7 +4,7 @@ const models = require('../models');
 const boot = require('./boot');
 
 logger.info(`[${__filename}] *** Connecting to database and creating routes ***`);
-const connection = mongoose.createConnection('mongodb://127.0.0.1/test');
+const connection = mongoose.createConnection('mongodb://127.0.0.1/appTareas');
 mongoose.Promise = Promise;
 
 connection.on('connected', () => {
@@ -15,7 +15,7 @@ connection.on('connected', () => {
 connection.on('error', (err) => {
   logger.error(`[${__filename}] *** Error connecting to DB ***`, {
     errorMessage: err.message,
-    errorStack: err.message,
+    errorStack: err.stack,
   });
 });
 

@@ -1,5 +1,5 @@
 const Validator = require('fastest-validator');
-const db = require('../../init/databases');
+const tareasDAO = require('./tareasDAO');
 const schemas = require('./schemas');
 
 /**
@@ -20,11 +20,10 @@ module.exports.validarDatosPost = (datos) => {
 };
 
 /**
- * Permite crear una tarea y guardarla
+ * Permite crear una tarea
  * @param  {Tarea} datos
- * @throws {ValidationError}
  */
 module.exports.crearTarea = async (datos) => {
-  const tareas = await db.models.Tarea.find();
+  const tareas = await tareasDAO.almacenarTarea(datos);
   return tareas;
 };

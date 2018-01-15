@@ -2,6 +2,11 @@ const ErrorDeValidacion = require('../../errores/error-validacion');
 const tareasBL = require('./tareasBL');
 const errorHandler = require('../../helpers/error-handler');
 
+/**
+ * Maneja el verbo post a la ruta de tareas
+ * @param  {Object} req Request de express
+ * @param  {Object} res Response de express
+ */
 const post = async (req, res) => {
   try {
     const esValido = await tareasBL.validarDatosPost(req.body);

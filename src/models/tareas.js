@@ -1,3 +1,12 @@
+const maquinaEstados = require('./states/tareas');
+
+const estados = maquinaEstados().allStates();
+const indice = estados.indexOf('none');
+
+if (indice > -1) {
+  estados.splice(indice, 1);
+}
+
 const tareaSchema = {
   titulo: {
     type: String,
@@ -14,9 +23,8 @@ const tareaSchema = {
   }],
   estado: {
     type: String,
-    enum: ['CREADO', 'FINALIZADO', 'ELIMINADO'],
+    enum: estados,
     required: true,
-    default: 'CREADO',
   },
   creacion: {
     fecha: {
@@ -32,15 +40,13 @@ const tareaSchema = {
   modificacion: {
     fecha: {
       type: Date,
-      required: true,
       default: Date.now,
     },
     usuario: {
       type: String,
-      required: true,
     },
   },
 };
 
 module.exports.esquema = tareaSchema;
-module.exports.nombre = 'Tarea';
+module.exports.nombre = 'Tareas';
