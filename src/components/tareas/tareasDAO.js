@@ -2,6 +2,8 @@ const moment = require('moment');
 const db = require('../../init/databases');
 const tareasEstados = require('../../models/states/tareas');
 
+const { Tareas } = db.models;
+
 /**
  * @typedef {Object} Tarea
  * @property {String} titulo
@@ -20,7 +22,7 @@ const tareasEstados = require('../../models/states/tareas');
  * @returns {TareaCompleta}
  */
 module.exports.almacenarTarea = (datos) => {
-  const tarea = new db.models.Tareas({
+  const tarea = new Tareas({
     titulo: datos.titulo,
     descripcion: datos.descripcion,
     seguimiento: [],

@@ -40,7 +40,6 @@ const tareaSchema = {
   modificacion: {
     fecha: {
       type: Date,
-      default: Date.now,
     },
     usuario: {
       type: String,

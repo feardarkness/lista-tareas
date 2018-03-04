@@ -1,5 +1,5 @@
 module.exports = class ErrorDeValidacion extends Error {
-  constructor(errores, codigo) {
+  constructor(error, codigo, errores) {
     super('Error de validación');
     this.errores = errores;
     this.name = this.constructor.name;

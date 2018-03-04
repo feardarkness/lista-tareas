@@ -20,10 +20,15 @@ connection.on('error', (err) => {
 });
 
 const cerrarConexion = () => {
-  connection.close(() => {
-    logger.info(`[${__filename}] *** Connection to DB closed ***`);
-    process.exit(0);
-  });
+  try {
+    connection.close(() => {
+      logger.info(`[${__filename}] *** Connection to DB closed ***`);
+      process.exit(0);
+    });
+  } catch (err) {
+    logger.error(`[${__filename}] `, { message: err.message, stackTrace: err.trace });
+    process.exit(1);
+  }
 };
 
 process.on('SIGINT', cerrarConexion).on('SIGTERM', cerrarConexion);

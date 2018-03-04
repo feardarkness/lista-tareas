@@ -8,14 +8,32 @@ const schemas = require('./schemas');
  * @property {String} descripcion
  */
 
-const validator = new Validator();
 /**
  * Valida los datos de una tarea
  * @param  {Tarea} datos
  * @returns {Array} Returns an array with errors
  */
 module.exports.validarDatosPost = (datos) => {
+  const validator = new Validator();
   const check = validator.compile(schemas.tarea.post);
+  return check(datos);
+};
+
+/**
+ * @typedef {Object} GetParams
+ * @property {String} limite
+ * @property {String} intervalo
+ * @property {String} orden
+ */
+
+/**
+ * Valida los datos de una tarea
+ * @param  {GetParams} datos
+ * @returns {Array} Returns an array with errors
+ */
+module.exports.validarDatosListadoGet = (datos) => {
+  const validator = new Validator();
+  const check = validator.compile(schemas.tarea.getLista);
   return check(datos);
 };
 
